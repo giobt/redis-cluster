@@ -44,7 +44,13 @@ end
 priority = 100
 node.default[:redis][:slave] = "yes"
 node[:redis][:ports].each do |port|
-  node.default[:redis][:server][:port] = port
+  # Change parameters for more different instances of redis
+  node.default[:redis][:pid_file]          = "/var/run/redis-#{port}.pid"
+  node.default[:redis][:server][:port]     = port
+  node.default[:redis][:log_dir]           = "/var/log/redis-#{port}"
+  node.default[:redis][:data_dir]          = "/var/lib/redis-#{port}"
+  
+  # Create configuration file for each slave redis instance
   template "#{node[:redis][:conf_dir]}/redis#{port}.conf" do
     source        "redis.conf.erb"
     owner         "root"
