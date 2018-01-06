@@ -41,7 +41,7 @@ default[:redis][:saves]             = [["900", "1"], ["300", "10"], ["60", "1000
 default[:redis][:slave]             = "no"
 if (node[:redis][:slave] == "yes")
   # TODO: replace with discovery
-  default[:redis][:master_server]   = "redis-master." + domain
+  default[:redis][:master_server]   = 127.0.0.1
   default[:redis][:master_port]     = "6379"
 end
 
@@ -49,3 +49,9 @@ default[:redis][:shareobjects]      = "no"
 if (node[:redis][:shareobjects] == "yes")
   default[:redis][:shareobjectspoolsize] = 1024
 end
+
+#
+# Slaves
+#
+
+default[:redis][:slave][:ports]     = [6380, 6381, 6382]

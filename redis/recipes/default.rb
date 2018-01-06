@@ -31,10 +31,24 @@ end
 # Install redis_server
 package 'redis-server'
 
+# Configure master node template
 template "#{node[:redis][:conf_dir]}/redis.conf" do
   source        "redis.conf.erb"
   owner         "root"
   group         "root"
   mode          "0644"
   variables     :redis => node[:redis], :redis_server => node[:redis][:server]
+end
+
+# Configure slave node templates
+node[:redis][:slave] = yes
+node[:redis][:slave][:ports].each do |port|
+  node[:redis][:server][:port] = port
+  template "#{node[:redis][:conf_dir]}/redis.conf" do
+    source        "redis.conf.erb"
+    owner         "root"
+    group         "root"
+    mode          "0644"
+    variables     :redis => node[:redis], :redis_server => node[:redis][:server]
+  end
 end
