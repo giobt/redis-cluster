@@ -54,4 +54,4 @@ end
 # Slaves
 #
 
-default[:redis][:slave][:ports]     = ["6380", "6381", "6382"]
+default[:redis][:ports]             = ["6380", "6381", "6382"]

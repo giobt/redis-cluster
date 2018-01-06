@@ -42,7 +42,7 @@ end
 
 # Configure slave node templates
 node[:redis][:slave] = yes
-node[:redis][:slave][:ports].each do |port|
+node[:redis][:ports].each do |port|
   node[:redis][:server][:port] = port
   template "#{node[:redis][:conf_dir]}/redis.conf" do
     source        "redis.conf.erb"
