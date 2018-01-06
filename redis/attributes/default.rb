@@ -41,7 +41,7 @@ default[:redis][:saves]             = [["900", "1"], ["300", "10"], ["60", "1000
 default[:redis][:slave]             = "no"
 if (node[:redis][:slave] == "yes")
   # TODO: replace with discovery
-  default[:redis][:master_server]   = 127.0.0.1
+  default[:redis][:master_server]   = "127.0.0.1"
   default[:redis][:master_port]     = "6379"
 end
 
