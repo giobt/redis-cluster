@@ -67,6 +67,7 @@ databases 16
 # different interval, or to listen to another port, and so on.
 
 slaveof <%= @redis[:master_server] %> <%= @redis[:master_port] %>
+slave-priority <%= @priority %>
 <% end %>
 
 ################################## SECURITY ###################################
