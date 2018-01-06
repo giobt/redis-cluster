@@ -41,7 +41,7 @@ template "#{node[:redis][:conf_dir]}/redis.conf" do
 end
 
 # Configure slave node templates
-node[:redis][:slave] = yes
+node[:redis][:slave] = "yes"
 node[:redis][:ports].each do |port|
   node[:redis][:server][:port] = port
   template "#{node[:redis][:conf_dir]}/redis.conf" do
