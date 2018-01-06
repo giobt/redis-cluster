@@ -49,7 +49,23 @@ node[:redis][:ports].each do |port|
   node.default[:redis][:server][:port]     = port
   node.default[:redis][:log_dir]           = "/var/log/redis-#{port}"
   node.default[:redis][:data_dir]          = "/var/lib/redis-#{port}"
-  
+
+  # Create log directory for redis slave
+  directory node[:redis][:log_dir] do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    action :create
+  end
+
+  # Create lib directory for redis slave
+  directory node[:redis][:data_dir] do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    action :create
+  end
+
   # Create configuration file for each slave redis instance
   template "#{node[:redis][:conf_dir]}/redis#{port}.conf" do
     source        "redis.conf.erb"
