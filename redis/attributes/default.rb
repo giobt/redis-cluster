@@ -27,7 +27,7 @@ default[:redis][:server][:port]     = "6379"
 #
 
 default[:redis][:version]           = "4.0.6"
-default[:redis][:release_url]       = "http://download.redis.io/releases/redis-:version.tar.gz"
+default[:redis][:release_url]       = "http://download.redis.io/releases/redis-4.0.6.tar.gz"
 
 #
 # Tunables
