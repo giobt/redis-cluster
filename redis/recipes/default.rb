@@ -19,11 +19,17 @@
 # limitations under the License.
 #
 
-include_recipe 'metachef'
+# Include apt recipe to add redis repository
+include_recipe 'apt'
 
-standard_dirs('redis.server') do
-  directories   :conf_dir
+# Add redis repository
+apt_repository 'redis-server' do
+  uri          'ppa:chris-lea/redis-server'
+  distribution node['lsb']['codename']
 end
+
+# Install redis_server
+package 'redis-server'
 
 template "#{node[:redis][:conf_dir]}/redis.conf" do
   source        "redis.conf.erb"

@@ -10,6 +10,7 @@ description      "Redis: a fast, flexible datastore offering an extremely useful
 depends          "runit"
 depends          "install_from"
 depends          "metachef"
+depends          "apt"
 
 recipe           "redis::default",                     "Base configuration for redis"
 recipe           "redis::install_from_package",        "Install From Ubuntu Package -- easy but lags in version"
