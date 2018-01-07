@@ -68,26 +68,6 @@ Resources:
         Setup:
           - 'redis::default'
           - 'redis::config_slaves'
-  ELBAttachment:
-    Type: 'AWS::OpsWorks::ElasticLoadBalancerAttachment'
-    Properties:
-      ElasticLoadBalancerName: !Ref ELB
-      LayerId: !Ref myLayer
-  ELB:
-    Type: 'AWS::ElasticLoadBalancing::LoadBalancer'
-    Properties:
-      AvailabilityZones: !GetAZs ''
-      Listeners:
-        - LoadBalancerPort: '80'
-          InstancePort: '80'
-          Protocol: HTTP
-          InstanceProtocol: HTTP
-      HealthCheck:
-        Target: 'HTTP:80/'
-        HealthyThreshold: '2'
-        UnhealthyThreshold: '10'
-        Interval: '30'
-        Timeout: '5'
   myAppInstance1:
     Type: 'AWS::OpsWorks::Instance'
     Properties:

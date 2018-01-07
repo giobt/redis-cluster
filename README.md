@@ -38,3 +38,4 @@ The roles `ServiceRole` and `InstanceRole` are created automatically after using
 Notes
 --------
 The OS of the EC2 instance is configured to be `Ubuntu 16.04 LTS`, and the instance type is set to `m1.small`.
+The Opsworks security group must have the port range `[6379, 6382]` opened so the nodes can talk to each other.

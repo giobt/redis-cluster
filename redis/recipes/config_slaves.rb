@@ -7,9 +7,6 @@
 # Copyright 2018, Giorgio Balconi
 #
 
-# Include apt recipe to add redis repository
-include_recipe 'apt'
-
 # Configure slave node templates
 priority = 100
 node.default[:redis][:slave] = "yes"
