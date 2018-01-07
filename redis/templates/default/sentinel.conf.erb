@@ -1,5 +1,5 @@
 <% if @sentinel_port > 0 %>
-sentinel port <%= @sentinel_port %>
+port <%= @sentinel_port %>
 <% end %>
 sentinel monitor <%= @master_name %> 127.0.0.1 <%= @port %> 1
 sentinel down-after-milliseconds <%= @master_name %> 5000
