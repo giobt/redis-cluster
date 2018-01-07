@@ -9,9 +9,12 @@ This repository contains a **Chef** cookbook that installs **redis-server** and 
 > - **cloudform.yml**: infrastructure as code script that initializes an Opsworks stack to use Chef 12 in AWS.
 > - **redis**: Chef cookbook that installs redis and configures the master-slave replication.
 > - **redis/recipes/default.rb**: Chef recipe that installs redis and configures the master node.
+> - **redis/recipes/sentinel.rb**: Chef recipe that installs and configures the redis-sentinel.
 > - **redis/recipes/config_slaves.rb**: Chef recipe that configures the slave nodes.
+> - **redis/recipes/sentinel_slaves.rb**: Chef recipe that configures sentinel for the rest of redis nodes.
 > - **redis/attributes/default.rb**: Default attributes for redis installation.
 > - **redis/templates/default/redis.conf.erb**: Redis configuration file template
+> - **redis/templates/default/sentinel.conf.erb**: Redis sentinel configuration file template
 
 
 ----------
