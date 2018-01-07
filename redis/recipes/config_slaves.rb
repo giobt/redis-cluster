@@ -19,16 +19,16 @@ node[:redis][:ports].each do |port|
 
   # Create log directory for redis slave
   directory node[:redis][:log_dir] do
-    owner 'redis'
-    group 'redis'
+    owner 'root'
+    group 'root'
     mode '0755'
     action :create
   end
 
   # Create lib directory for redis slave
   directory node[:redis][:data_dir] do
-    owner 'redis'
-    group 'redis'
+    owner 'root'
+    group 'root'
     mode '0755'
     action :create
   end
@@ -36,8 +36,8 @@ node[:redis][:ports].each do |port|
   # Create configuration file for each slave redis instance
   template "#{node[:redis][:conf_dir]}/redis#{port}.conf" do
     source        "redis.conf.erb"
-    owner         "redis"
-    group         "redis"
+    owner         "root"
+    group         "root"
     mode          "0644"
     variables     :redis => node[:redis], :redis_server => node[:redis][:server], :priority => priority
   end
