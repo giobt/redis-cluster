@@ -33,7 +33,7 @@ default[:redis][:release_url]       = "http://download.redis.io/releases/redis-4
 # Tunables
 #
 
-default[:redis][:server][:timeout]  = "300"
+default[:redis][:server][:timeout]  = "60"
 default[:redis][:glueoutputbuf]     = "yes"
 
 default[:redis][:saves]             = [["900", "1"], ["300", "10"], ["60", "10000"]]
