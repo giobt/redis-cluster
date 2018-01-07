@@ -1,22 +1,16 @@
 name             "redis"
-maintainer       "Benjamin Black"
-maintainer_email "b@b3k.us"
+maintainer       "Giorgio Balconi"
+maintainer_email "gabalconi@gmail.com"
 license          "Apache 2.0"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "3.0.4"
+version          "1.0.0"
 
-description      "Redis: a fast, flexible datastore offering an extremely useful set of data structure primitives"
+description      "Install Redis and configure replication with 1 master and 3 slave nodes"
 
-depends          "runit"
-depends          "install_from"
-depends          "metachef"
 depends          "apt"
 
-recipe           "redis::default",                     "Base configuration for redis"
-recipe           "redis::install_from_package",        "Install From Ubuntu Package -- easy but lags in version"
-recipe           "redis::install_from_release",        "Install From Release"
-recipe           "redis::server",                      "Redis server with runit service"
-recipe           "redis::client",                      "Client support for Redis database"
+recipe           "redis::default",                     "Install redis and configure master node"
+recipe           "redis::config_slaves",               "Configure slave nodes"
 
 %w[ debian ubuntu ].each do |os|
   supports os
@@ -86,7 +80,7 @@ attribute "redis/user",
 attribute "redis/version",
   :display_name          => "",
   :description           => "",
-  :default               => "2.0.2"
+  :default               => "4.0.6"
 
 attribute "redis/server/addr",
   :display_name          => "IP address to bind.",
@@ -112,3 +106,8 @@ attribute "groups/redis/gid",
   :display_name          => "",
   :description           => "",
   :default               => "335"
+
+attribure "redis/ports",
+  :display_name          => "",
+  :description           => "",
+  :default               => ["6380", "6381", "6382"]
