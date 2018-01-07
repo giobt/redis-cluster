@@ -49,5 +49,11 @@ end
 
 default[:redis][:ports]             = ["6380", "6381", "6382"]
 default[:redis][:slave]             = "no"
-default[:redis][:master_server]   = "127.0.0.1"
-default[:redis][:master_port]     = "6379"
+default[:redis][:master_server]     = "127.0.0.1"
+default[:redis][:master_port]       = "6379"
+
+#
+# Sentinel
+#
+
+default[:sentinel][:master_name]    = "mymaster"
