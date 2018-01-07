@@ -67,7 +67,10 @@ Resources:
       CustomRecipes:
         Setup:
           - 'redis::default'
+          - 'redis::sentinel'
+        Configure:
           - 'redis::config_slaves'
+          - 'redis::sentinel_slaves'
   myAppInstance1:
     Type: 'AWS::OpsWorks::Instance'
     Properties:
