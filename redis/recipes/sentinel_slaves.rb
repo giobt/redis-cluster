@@ -19,7 +19,7 @@ node[:redis][:ports].each do |port|
     owner         "root"
     group         "root"
     mode          "0644"
-    variables     :port => node[:redis][:server][:port], :master_name => priority
+    variables     :port => node[:redis][:server][:port], :master_name => node[:sentinel][:master_name]
   end
 
   # Start redis slave service instance
