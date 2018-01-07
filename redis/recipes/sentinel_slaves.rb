@@ -27,7 +27,4 @@ node[:redis][:ports].each do |port|
     command "redis-sentinel #{node[:redis][:conf_dir]}/sentinel#{port}.conf"
     user 'redis'
   end
-
-  # Increase slave priority for every node
-  priority = priority + 100
 end
