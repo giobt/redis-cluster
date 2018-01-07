@@ -25,6 +25,6 @@ node[:redis][:ports].each do |port|
   # Start redis slave service instance
   execute 'redis-sentinel' do
     command "redis-sentinel #{node[:redis][:conf_dir]}/sentinel#{port}.conf"
-    user 'redis'
+    user 'root'
   end
 end

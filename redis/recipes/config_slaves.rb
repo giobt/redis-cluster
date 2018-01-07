@@ -45,7 +45,7 @@ node[:redis][:ports].each do |port|
   # Start redis slave service instance
   execute 'redis-server' do
     command "redis-server #{node[:redis][:conf_dir]}/redis#{port}.conf"
-    user 'redis'
+    user 'root'
   end
 
   # Increase slave priority for every node
