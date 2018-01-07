@@ -19,10 +19,11 @@ This repository contains a **Chef** cookbook that installs **redis-server** and 
 Usage
 -------------
 
-All you need to run this project is run the ``cloudform.yml`` script in AWS Cloudformation. This must be performed by an IAM user with the following permissions:
+All you need to run  the ``cloudform.yml`` template in AWS Cloudformation. This must be performed by an IAM user with the following permissions:
 > **AWS Permissions needed:**
 >
 > "sqs:*",
+> "sns:*",
 > "cloudformation:*",
 > "s3:*",
 > "ec2:*",
