@@ -10,6 +10,7 @@
 # Configure slave node templates
 node[:redis][:ports].each do |port|
   # Change parameters for more different instances of redis
+  sentinel_port = 20000 + port
   node.default[:redis][:server][:port] = port
   node.default[:sentinel][:master_name] = "slave-#{port}"
 
@@ -19,7 +20,7 @@ node[:redis][:ports].each do |port|
     owner         "root"
     group         "root"
     mode          "0644"
-    variables     :port => node[:redis][:server][:port], :master_name => node[:sentinel][:master_name]
+    variables     :sentinel_port => sentinel_port, :port => node[:redis][:server][:port], :master_name => node[:sentinel][:master_name]
   end
 
   # Start redis slave service instance
